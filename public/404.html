@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>404 - Page Not Found | AstroAPI</title>
+      <meta name="description" content="The page you're looking for cannot be found. Return to AstroAPI homepage." />
+
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+      <!-- Fira Sans Font -->
+      <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+      <!-- FontAwesome for Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+      <style>
+         :root {
+            --background: #080808;
+            --text-white: #fafafa;
+            --text-gray: #a0a0a0;
+            --accent-blue: #1175e7;
+            --button-blue: #3eaaf3;
+            --button-hover: #21608b;
+         }
+
+         body {
+            font-family: "Fira Sans", sans-serif;
+            background-color: var(--background);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+         }
+
+         .navbar {
+            padding: 1rem 2rem;
+            background-color: var(--background);
+         }
+
+         .navbar-brand svg text {
+            fill: var(--text-white);
+         }
+
+         .error-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+         }
+
+         .error-content {
+            max-width: 600px;
+         }
+
+         .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+         }
+
+         .error-message {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+         }
+
+         .error-description {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+         }
+
+         .btn-home {
+            background-color: var(--button-blue);
+            color: var(--text-white);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+         }
+
+         .btn-home:hover {
+            background-color: var(--button-hover);
+         }
+
+         .space-theme {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+         }
+
+         .star {
+            position: absolute;
+            background-color: var(--text-white);
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+         }
+
+         @keyframes twinkle {
+            0%,
+            100% {
+               opacity: 0;
+            }
+            50% {
+               opacity: 1;
+            }
+         }
+      </style>
+   </head>
+
+   <body>
+      <!-- Navbar -->
+      <nav class="navbar">
+         <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+               <svg xmlns="http://www.w3.org/2000/svg" width="120" height="40">
+                  <text x="0" y="30" font-family="Fira Sans" font-size="28" font-weight="bold">AstroAPI</text>
+               </svg>
+            </a>
+         </div>
+      </nav>
+
+      <!-- 404 Error Content -->
+      <div class="error-container">
+         <div class="error-content">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-message">Houston, we have a problem!</h2>
+            <p class="error-description">The page you're looking for seems to have drifted off into space. Don't worry, our mission control is on it!</p>
+            <a href="/" class="btn btn-home">Return to Earth (Home)</a>
+         </div>
+      </div>
+
+      <!-- Space Theme Background -->
+      <div class="space-theme" id="space-background"></div>
+
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            const spaceBackground = document.getElementById("space-background");
+            const starCount = 100;
+
+            for (let i = 0; i < starCount; i++) {
+               const star = document.createElement("div");
+               star.className = "star";
+               star.style.width = `${Math.random() * 3}px`;
+               star.style.height = star.style.width;
+               star.style.left = `${Math.random() * 100}%`;
+               star.style.top = `${Math.random() * 100}%`;
+               star.style.animationDelay = `${Math.random() * 3}s`;
+               spaceBackground.appendChild(star);
+            }
+         });
+      </script>
+   </body>
+</html>
